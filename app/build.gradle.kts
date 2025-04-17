@@ -58,14 +58,10 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 
     dependencies {
-        val room_version = "2.7.0"
-
-        implementation("androidx.room:room-runtime:$room_version")
-
+        implementation(libs.androidx.room.runtime)
         // optional - Kotlin Extensions and Coroutines support for Room
-        implementation("androidx.room:room-ktx:$room_version")
-
+        implementation(libs.androidx.room.ktx)
         // optional - Test helpers
-        testImplementation("androidx.room:room-testing:$room_version")
+        testImplementation(libs.androidx.room.testing)
     }
 }
