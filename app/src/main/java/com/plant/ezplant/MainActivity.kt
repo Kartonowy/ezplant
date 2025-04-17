@@ -1,6 +1,7 @@
 package com.plant.ezplant
 
 import android.os.Bundle
+import android.provider.ContactsContract.Data
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -29,12 +30,19 @@ import androidx.compose.ui.layout.AlignmentLine
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
+import androidx.room.Room
 import com.plant.ezplant.ui.theme.EZplantTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        val db = Room.databaseBuilder(
+            applicationContext,
+            Database::class.java, "ezplant-db"
+        )
+
         setContent {
             EZplantTheme {
                 MainLayout("lo")
