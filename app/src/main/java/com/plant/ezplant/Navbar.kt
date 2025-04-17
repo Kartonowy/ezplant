@@ -14,41 +14,46 @@ import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.ui.Modifier
 import androidx.compose.material3.NavigationBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
 
 @Composable
-fun Navbar(modifier: Modifier = Modifier) {
+fun Navbar(currentScreen: MutableState<Screen>, modifier: Modifier) {
+
+
     NavigationBar(
     ) {
-        Row (
+        Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceAround
         ) {
-            IconButton(onClick = { /* do something */ }) {
+            IconButton(onClick = { currentScreen.value = Screen.Home }) {
                 Icon(Icons.Filled.Home, contentDescription = "Localized description")
             }
-            IconButton(onClick = { /* do something */ }) {
+            IconButton(onClick = { currentScreen.value = Screen.Search }) {
                 Icon(
                     Icons.Filled.Search,
                     contentDescription = "Localized description",
                 )
             }
             FloatingActionButton(
-                onClick = { /* do something */ },
+                onClick = { currentScreen.value = Screen.List },
                 containerColor = BottomAppBarDefaults.bottomAppBarFabColor,
                 elevation = FloatingActionButtonDefaults.bottomAppBarFabElevation()
             ) {
                 Icon(Icons.Filled.Add, "Localized description")
             }
-            IconButton(onClick = { /* do something */ }) {
+            IconButton(onClick = { currentScreen.value = Screen.List }) {
                 Icon(
                     Icons.Filled.Menu,
                     contentDescription = "Localized description",
                 )
             }
-            IconButton(onClick = { /* do something */ }) {
+            IconButton(onClick = { currentScreen.value = Screen.Profile }) {
                 Icon(
                     Icons.Filled.Person,
                     contentDescription = "Localized description",

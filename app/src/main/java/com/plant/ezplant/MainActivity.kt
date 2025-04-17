@@ -48,11 +48,18 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MainLayout(spelar: String = "dota",modifier: Modifier = Modifier) {
 
+    var currentScreen = remember { mutableStateOf(Screen.Home) }
 
     Scaffold(
-        bottomBar = { Navbar() }
+        bottomBar = { Navbar(currentScreen, Modifier) }
     ) { innerPadding ->
-        Tiles(innerPadding, Modifier)
+        when (currentScreen.value) {
+            Screen.Home -> Tiles(innerPadding, Modifier)
+            Screen.Search -> Text("Search")
+            Screen.Add -> Text("Add")
+            Screen.List -> Text("List")
+            Screen.Profile -> Text("Profile")
+        }
     }
 }
 

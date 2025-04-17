@@ -27,7 +27,7 @@ public fun GivePlants(): MutableList<Plant> {
         Plant("Granate", 3, true ),
         Plant("Poppy", 2, false ),
         Plant("Grass", 0, false ),
-        Plant("Cherry", 10, true ),
+        Plant("Cherry", 4, true ),
         Plant("Hibiscus", 8, false ),
         Plant("Granate", 3, true ),
         Plant("Poppy", 2, false ),
