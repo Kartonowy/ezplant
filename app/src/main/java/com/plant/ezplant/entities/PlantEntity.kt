@@ -9,5 +9,5 @@ import androidx.room.PrimaryKey
 data class PlantEntity(
     @PrimaryKey val uid: Int,
     @ColumnInfo(name = "plant_name") val plantName: String,
-    @ColumnInfo(name = "dehydration", defaultValue = false.toString()) val dehydration: Boolean
+    @ColumnInfo(name = "dehydration") val dehydration: Int?
 )

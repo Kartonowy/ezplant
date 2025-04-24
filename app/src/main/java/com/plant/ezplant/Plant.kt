@@ -9,50 +9,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-
-class Plant(
-    val name: String,
-    val difficulty: Int,
-    var dead: Boolean = false,
-)
-
-public fun GivePlants(): MutableList<Plant> {
-    val list = mutableListOf(
-        Plant("Hibiscus", 8, false ),
-        Plant("Granate", 3, true ),
-        Plant("Poppy", 2, false ),
-        Plant("Grass", 0, false ),
-        Plant("Cherry", 10, true ),
-        Plant("Hibiscus", 8, false ),
-        Plant("Granate", 3, true ),
-        Plant("Poppy", 2, false ),
-        Plant("Grass", 0, false ),
-        Plant("Cherry", 10, true ),
-        Plant("Hibiscus", 8, false ),
-        Plant("Granate", 3, true ),
-        Plant("Poppy", 2, false ),
-        Plant("Grass", 0, false ),
-        Plant("Cherry", 10, true ),
-    )
-
-    return list
-}
+import com.plant.ezplant.entities.PlantEntity
 
 @Composable
-public fun PlantTile(plant: Plant, modifier: Modifier = Modifier) {
+public fun PlantTile(plant: PlantEntity, modifier: Modifier = Modifier) {
     Card(
         modifier = Modifier.width(10.dp)
     ) {
         Text(
-            text = plant.name,
+            text = plant.plantName.toString(),
             fontSize = 32.sp
         )
         Text(
-            text = "Difficulty is ${plant.difficulty}/10",
-            fontSize = 18.sp
-        )
-        Text(
-            text = "Is it dead? ${plant.dead}",
+            text = "Is it dead? ${plant.dehydration}",
             fontSize = 18.sp
         )
     }

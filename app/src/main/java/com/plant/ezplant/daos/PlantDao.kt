@@ -9,17 +9,17 @@ import com.plant.ezplant.entities.PlantEntity
 @Dao
 interface PlantDao {
     @Query("SELECT * FROM plantentity")
-    fun getAll(): List<PlantEntity>
+    suspend fun getAll(): List<PlantEntity>
 
     @Query("SELECT * FROM plantentity WHERE uid IN (:userIds)")
-    fun loadAllByIds(userIds: IntArray): List<PlantEntity>
+    suspend fun loadAllByIds(userIds: IntArray): List<PlantEntity>
 
     @Query("SELECT * FROM plantentity WHERE plant_name LIKE :first" )
-    fun findByName(first: String, last: String): PlantEntity
+    suspend fun findByName(first: String): PlantEntity
 
     @Insert
-    fun insertAll(vararg users: PlantEntity)
+    suspend fun insertAll(vararg users: PlantEntity)
 
     @Delete
-    fun delete(user: PlantEntity)
+    suspend fun delete(user: PlantEntity)
 }

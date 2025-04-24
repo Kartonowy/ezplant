@@ -1,5 +1,6 @@
 package com.plant.ezplant
 
+import android.content.Context
 import android.os.Bundle
 import android.provider.ContactsContract.Data
 import androidx.activity.ComponentActivity
@@ -20,6 +21,7 @@ import androidx.compose.foundation.lazy.staggeredgrid.items
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -32,16 +34,22 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.room.Room
 import com.plant.ezplant.ui.theme.EZplantTheme
+import com.plant.ezplant.viewmodels.PlantViewModel
 
 class MainActivity : ComponentActivity() {
+
+    companion object {
+        lateinit var appContext: Context
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        MainActivity.appContext = applicationContext
 
-        val db = Room.databaseBuilder(
-            applicationContext,
-            Database::class.java, "ezplant-db"
-        )
+        val db = Database.getInstance(applicationContext)
+
+
+
 
         setContent {
             EZplantTheme {
@@ -54,7 +62,7 @@ class MainActivity : ComponentActivity() {
 
 @Preview(showBackground = true)
 @Composable
-fun MainLayout(spelar: String = "dota",modifier: Modifier = Modifier) {
+fun MainLayout(spelar: String = "dota", modifier: Modifier = Modifier) {
 
 
     Scaffold(
@@ -66,13 +74,16 @@ fun MainLayout(spelar: String = "dota",modifier: Modifier = Modifier) {
 
 @Composable
 fun Tiles(paddingValues: PaddingValues, modifier: Modifier) {
+    val vm = PlantViewModel(Database.getInstance(MainActivity.appContext).PlantDao())
+
+    val plants by vm.plants.collectAsState()
     LazyVerticalStaggeredGrid(
         contentPadding = paddingValues,
         columns = StaggeredGridCells.Adaptive(200.dp),
         verticalItemSpacing = 4.dp,
         horizontalArrangement = Arrangement.spacedBy(4.dp),
         content = {
-            items(GivePlants()) { plant ->
+            items(plants) { plant ->
                 PlantTile(plant)
             }
         },
