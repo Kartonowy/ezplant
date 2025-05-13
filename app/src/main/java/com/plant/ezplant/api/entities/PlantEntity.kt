@@ -1,4 +1,4 @@
-package com.plant.ezplant.entities
+package com.plant.ezplant.api.entities
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class PlantEntity(
-    @PrimaryKey val uid: Int,
+    @PrimaryKey(autoGenerate = true) val uid: Int = 0,
     @ColumnInfo(name = "plant_name") val plantName: String,
     @ColumnInfo(name = "dehydration") val dehydration: Int?
 )
