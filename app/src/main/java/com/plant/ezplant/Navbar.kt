@@ -41,7 +41,7 @@ fun Navbar(currentScreen: MutableState<Screen>, modifier: Modifier) {
                 )
             }
             FloatingActionButton(
-                onClick = { currentScreen.value = Screen.List },
+                onClick = { currentScreen.value = Screen.Add },
                 containerColor = BottomAppBarDefaults.bottomAppBarFabColor,
                 elevation = FloatingActionButtonDefaults.bottomAppBarFabElevation()
             ) {

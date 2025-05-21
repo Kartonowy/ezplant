@@ -1,15 +1,16 @@
 package com.plant.ezplant
 
-import androidx.compose.foundation.layout.size
+import android.graphics.Color
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardColors
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.plant.ezplant.entities.PlantEntity
+import com.plant.ezplant.api.entities.PlantEntity
 
 @Composable
 public fun PlantTile(plant: PlantEntity, modifier: Modifier = Modifier) {

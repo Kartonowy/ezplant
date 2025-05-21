@@ -1,26 +1,28 @@
-package com.plant.ezplant
+package com.plant.ezplant.api
 
 import android.content.Context
-import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.plant.ezplant.daos.PlantDao
-import com.plant.ezplant.entities.PlantEntity
+import androidx.room.TypeConverters
+import com.plant.ezplant.api.daos.PlantDao
+import com.plant.ezplant.api.entities.Converters
+import com.plant.ezplant.api.entities.PlantEntity
 
-@Database(entities = [PlantEntity::class], version = 1)
+@androidx.room.Database(entities = [PlantEntity::class], version = 1)
+@TypeConverters(Converters::class)
 abstract class Database : RoomDatabase() {
     abstract fun PlantDao(): PlantDao
 
     companion object {
         @Volatile
-        private var INSTANCE: com.plant.ezplant.Database? = null
+        private var INSTANCE: Database? = null
 
-        fun getInstance(context: Context): com.plant.ezplant.Database {
+        fun getInstance(context: Context): Database {
             context.deleteDatabase("ezplant.db")
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
-                    com.plant.ezplant.Database::class.java,
+                    Database::class.java,
                     "ezplant.db"
                 )
                     .createFromAsset("database/ezplant.db")
