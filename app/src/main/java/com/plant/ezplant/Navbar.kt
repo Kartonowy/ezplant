@@ -49,6 +49,7 @@ fun Navbar(currentScreen: MutableState<Screen>, modifier: Modifier) {
             FloatingActionButton(
                 onClick = { currentScreen.value = Screen.Add },
                 containerColor = AddButton,
+
                 elevation = FloatingActionButtonDefaults.bottomAppBarFabElevation()
             ) {
                 Icon(Icons.Filled.Add, "Localized description")

@@ -26,7 +26,6 @@ import com.plant.ezplant.ui.modifiers.cardStyle
 import com.plant.ezplant.ui.theme.GreenOnPrimary
 import com.plant.ezplant.ui.theme.GreenPrimary
 
-
 @Composable
 public fun PlantTile(plant: PlantEntity, modifier: Modifier = Modifier) {
     Card(

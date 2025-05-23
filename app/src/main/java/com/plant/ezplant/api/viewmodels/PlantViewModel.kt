@@ -1,9 +1,10 @@
-package com.plant.ezplant.viewmodels
+
+package com.plant.ezplant.api.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.plant.ezplant.daos.PlantDao
-import com.plant.ezplant.entities.PlantEntity
+import com.plant.ezplant.api.daos.PlantDao
+import com.plant.ezplant.api.entities.PlantEntity
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -18,4 +19,8 @@ class PlantViewModel(private val dao: PlantDao): ViewModel() {
             _plants.value = res
         }
     }
-}
+    fun insertPlant(plantName: String, dehydrated: Int?) {
+        viewModelScope.launch {
+            dao.insert(PlantEntity(plantName = plantName, dehydration = dehydrated))
+        }
+    }

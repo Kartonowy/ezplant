@@ -1,10 +1,12 @@
-package com.plant.ezplant.daos
+package com.plant.ezplant.api.daos
+
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import com.plant.ezplant.entities.PlantEntity
+import com.plant.ezplant.api.entities.PlantEntity
+
 
 @Dao
 interface PlantDao {
@@ -18,8 +20,12 @@ interface PlantDao {
     suspend fun findByName(first: String): PlantEntity
 
     @Insert
-    suspend fun insertAll(vararg users: PlantEntity)
+
+    suspend fun insert(plant: PlantEntity)
+
+    @Insert
+    suspend fun insertAll(vararg plants: PlantEntity)
 
     @Delete
-    suspend fun delete(user: PlantEntity)
+    suspend fun delete(plant: PlantEntity)
 }
