@@ -6,7 +6,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -30,15 +29,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.drawBehind
-import androidx.compose.ui.draw.paint
-import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
-import androidx.compose.ui.layout.AlignmentLine
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.room.Room
-import com.plant.ezplant.ui.modifiers.backgroundTiledImage
 import com.plant.ezplant.api.Database
 import com.plant.ezplant.api.daos.PlantDao
 import com.plant.ezplant.api.entities.PlantEntity
@@ -71,36 +63,26 @@ class MainActivity : ComponentActivity() {
 
 @Preview(showBackground = true)
 @Composable
-fun MainLayout(spelar: String = "dota", modifier: Modifier = Modifier) {
+fun MainLayout(modifier: Modifier = Modifier) {
+
     var currentScreen = remember { mutableStateOf(Screen.Home) }
 
-    val imagePainter = painterResource(id = R.drawable.potted_plant2)
-
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .backgroundTiledImage(imagePainter)
-    ) {
-        Scaffold(
-            bottomBar = { Navbar(currentScreen, Modifier) }
-        ) { innerPadding ->
-            when (currentScreen.value) {
-                Screen.Home -> Tiles(innerPadding, Modifier)
-                Screen.Search -> Text("Search")
-                Screen.Add -> AddPlant(innerPadding, Modifier)
-                Screen.List -> Text("List")
-                Screen.Profile -> Text("Profile")
-            }
+    Scaffold(
+        bottomBar = { Navbar(currentScreen, Modifier) }
+    ) { innerPadding ->
+        when (currentScreen.value) {
+            Screen.Home -> Tiles(innerPadding, Modifier)
+            Screen.Search -> Text("Search")
+            Screen.Add -> AddPlant(innerPadding, Modifier)
+            Screen.List -> Text("List")
+            Screen.Profile -> Text("Profile")
         }
     }
 }
 
-
 @Composable
 fun Tiles(paddingValues: PaddingValues, modifier: Modifier) {
     val vm = PlantViewModel(Database.getInstance(MainActivity.appContext).PlantDao())
-
-    val backgroundPainter = painterResource(R.drawable.potted_plant2)
 
     val plants by vm.plants.collectAsState()
 
@@ -122,6 +104,7 @@ fun Tiles(paddingValues: PaddingValues, modifier: Modifier) {
             modifier = Modifier.fillMaxSize()
         )
     }
+
 }
 
 @Composable

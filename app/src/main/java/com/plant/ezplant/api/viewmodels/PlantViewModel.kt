@@ -23,6 +23,7 @@ class PlantViewModel(private val dao: PlantDao): ViewModel() {
 
     fun insertPlant(plantName: String, dehydrated: Int?) {
         viewModelScope.launch {
+
             dao.insert(PlantEntity(
                 plantName = plantName,
                 dehydration = dehydrated,
