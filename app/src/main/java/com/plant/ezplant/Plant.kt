@@ -21,7 +21,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.plant.ezplant.entities.PlantEntity
+import com.plant.ezplant.api.entities.PlantEntity
 import com.plant.ezplant.ui.modifiers.cardStyle
 import com.plant.ezplant.ui.theme.GreenOnPrimary
 import com.plant.ezplant.ui.theme.GreenPrimary

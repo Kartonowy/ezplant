@@ -103,7 +103,7 @@ fun Tiles(paddingValues: PaddingValues, modifier: Modifier) {
     val backgroundPainter = painterResource(R.drawable.potted_plant2)
 
     val plants by vm.plants.collectAsState()
-    
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -122,7 +122,7 @@ fun Tiles(paddingValues: PaddingValues, modifier: Modifier) {
             modifier = Modifier.fillMaxSize()
         )
     }
-
+}
 
 @Composable
 fun AddPlant(paddingValues: PaddingValues, modifier: Modifier) {
