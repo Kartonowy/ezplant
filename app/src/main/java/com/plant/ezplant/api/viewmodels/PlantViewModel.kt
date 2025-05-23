@@ -8,6 +8,7 @@ import com.plant.ezplant.api.entities.PlantEntity
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import java.util.Date
 
 class PlantViewModel(private val dao: PlantDao): ViewModel() {
     private val _plants = MutableStateFlow<List<PlantEntity>>(emptyList())
@@ -19,8 +20,14 @@ class PlantViewModel(private val dao: PlantDao): ViewModel() {
             _plants.value = res
         }
     }
+
     fun insertPlant(plantName: String, dehydrated: Int?) {
         viewModelScope.launch {
-            dao.insert(PlantEntity(plantName = plantName, dehydration = dehydrated))
+            dao.insert(PlantEntity(plantName = plantName,
+                dehydration = dehydrated,
+                lastWatered = Date(),
+                photoPath = ""
+            ))
         }
     }
+}
