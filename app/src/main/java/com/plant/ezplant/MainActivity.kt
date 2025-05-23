@@ -85,18 +85,26 @@ fun Tiles(paddingValues: PaddingValues, modifier: Modifier) {
     val vm = PlantViewModel(Database.getInstance(MainActivity.appContext).PlantDao())
 
     val plants by vm.plants.collectAsState()
-    LazyVerticalStaggeredGrid(
-        contentPadding = paddingValues,
-        columns = StaggeredGridCells.Adaptive(200.dp),
-        verticalItemSpacing = 4.dp,
-        horizontalArrangement = Arrangement.spacedBy(4.dp),
-        content = {
-            items(plants) { plant ->
-                PlantTile(plant)
-            }
-        },
-        modifier = Modifier.fillMaxSize()
-    )
+
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .backgroundTiledImage(backgroundPainter)
+    ) {
+        LazyVerticalStaggeredGrid(
+            contentPadding = paddingValues,
+            columns = StaggeredGridCells.Adaptive(200.dp),
+            verticalItemSpacing = 4.dp,
+            horizontalArrangement = Arrangement.spacedBy(4.dp),
+            content = {
+                items(plants) { plant ->
+                    PlantTile(plant)
+                }
+            },
+            modifier = Modifier.fillMaxSize()
+        )
+    }
+
 }
 
 @Composable
