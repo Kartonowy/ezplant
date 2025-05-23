@@ -9,3 +9,10 @@ val Pink80 = Color(0xFFEFB8C8)
 val Purple40 = Color(0xFF6650a4)
 val PurpleGrey40 = Color(0xFF625b71)
 val Pink40 = Color(0xFF7D5260)
+
+val GreenPrimary = Color(0xFFC8E6C9)
+val GreenOnPrimary = Color(0xFF000000)
+
+val GreenBorder = Color(0xFFA5D6A7)
+
+val AddButton = Color(0xFFe6c8d6)

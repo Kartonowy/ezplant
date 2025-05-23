@@ -20,12 +20,18 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import com.plant.ezplant.ui.theme.AddButton
+import com.plant.ezplant.ui.theme.GreenOnPrimary
+import com.plant.ezplant.ui.theme.GreenPrimary
 
 @Composable
 fun Navbar(currentScreen: MutableState<Screen>, modifier: Modifier) {
 
 
     NavigationBar(
+        modifier = Modifier,
+        containerColor = GreenPrimary,
+        contentColor = GreenOnPrimary
     ) {
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -42,7 +48,8 @@ fun Navbar(currentScreen: MutableState<Screen>, modifier: Modifier) {
             }
             FloatingActionButton(
                 onClick = { currentScreen.value = Screen.Add },
-                containerColor = BottomAppBarDefaults.bottomAppBarFabColor,
+                containerColor = AddButton,
+
                 elevation = FloatingActionButtonDefaults.bottomAppBarFabElevation()
             ) {
                 Icon(Icons.Filled.Add, "Localized description")

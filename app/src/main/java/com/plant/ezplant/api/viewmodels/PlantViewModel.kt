@@ -1,3 +1,4 @@
+
 package com.plant.ezplant.api.viewmodels
 
 import androidx.lifecycle.ViewModel
@@ -18,10 +19,8 @@ class PlantViewModel(private val dao: PlantDao): ViewModel() {
             _plants.value = res
         }
     }
-
     fun insertPlant(plantName: String, dehydrated: Int?) {
         viewModelScope.launch {
             dao.insert(PlantEntity(plantName = plantName, dehydration = dehydrated))
         }
     }
-}
