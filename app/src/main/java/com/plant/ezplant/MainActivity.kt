@@ -6,6 +6,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -29,6 +30,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.plant.ezplant.api.Database
@@ -36,6 +38,7 @@ import com.plant.ezplant.api.daos.PlantDao
 import com.plant.ezplant.api.entities.PlantEntity
 import com.plant.ezplant.ui.theme.EZplantTheme
 import com.plant.ezplant.api.viewmodels.PlantViewModel
+import com.plant.ezplant.ui.modifiers.backgroundTiledImage
 import com.plant.ezplant.util.toBoolean
 import com.plant.ezplant.util.toInt
 import java.util.UUID
@@ -83,6 +86,8 @@ fun MainLayout(modifier: Modifier = Modifier) {
 @Composable
 fun Tiles(paddingValues: PaddingValues, modifier: Modifier) {
     val vm = PlantViewModel(Database.getInstance(MainActivity.appContext).PlantDao())
+
+    val backgroundPainter = painterResource(id = R.drawable.potted_plant2)
 
     val plants by vm.plants.collectAsState()
 
