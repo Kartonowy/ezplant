@@ -26,7 +26,6 @@ abstract class Database : RoomDatabase() {
                     Database::class.java,
                     "ezplant.db"
                 )
-                    .createFromAsset("database/ezplant.db")
                     .build()
                 INSTANCE = instance
                 instance
