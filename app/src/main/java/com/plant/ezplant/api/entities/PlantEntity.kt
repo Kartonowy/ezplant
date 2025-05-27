@@ -11,8 +11,12 @@ import java.util.Date
 data class PlantEntity(
     @PrimaryKey(autoGenerate = true) val uid: Int = 0,
     @ColumnInfo(name = "plant_name") val plantName: String,
+    @ColumnInfo(name = "species") val species: String?,
     @ColumnInfo(name = "dehydration") val dehydration: Int?,
-    @ColumnInfo(name = "last_watered") val lastWatered: Date,
+    @ColumnInfo(name = "last_watered") val lastWatered: Date?,
+    @ColumnInfo(name = "should_fertilize") val shouldFertilize: Boolean,
+    @ColumnInfo(name = "fertilization") val fertilization: Int?,
+    @ColumnInfo(name = "last_fertilized") val lastFertilized: Date?,
     @ColumnInfo(name = "photo_path") val photoPath: String
 )
 class Converters {
