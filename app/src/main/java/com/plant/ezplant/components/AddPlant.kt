@@ -9,11 +9,13 @@ import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts.PickVisualMedia
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -40,6 +42,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.plant.ezplant.MainActivity
@@ -134,10 +138,14 @@ fun AddPlant(paddingValues: PaddingValues, modifier: Modifier) {
                     }
                 }
                 Row(verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier.padding(20.dp, 5.dp, 20.dp, 5.dp)){
+                    modifier = Modifier.padding(20.dp, 5.dp, 20.dp, 5.dp).heightIn(0.dp, 60.dp).border(
+                        2.dp,
+                        SolidColor(Color.Red),
+                        RoundedCornerShape(16.dp)
+                    )
+                ){
                     Text("Species", fontSize = 20.sp)
-                    SpeciesAutoCompleteCompose(selectedText = species)
-                    Text(species.value)
+                    SpeciesAutoComplete(speciesText = species)
                 }
                 Row(verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier.padding(20.dp, 5.dp, 20.dp, 5.dp)){
