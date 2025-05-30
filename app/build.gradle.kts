@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    kotlin("plugin.serialization") version "2.1.20"
 
     id("com.google.devtools.ksp")
 }
@@ -65,4 +66,11 @@ dependencies {
     implementation(libs.androidx.room.ktx)
     // optional - Test helpers
     testImplementation(libs.androidx.room.testing)
+
+    //noinspection UseTomlInstead
+    implementation("io.github.cdimascio:dotenv-kotlin:6.5.1")
+    //noinspection UseTomlInstead
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.1")
 }

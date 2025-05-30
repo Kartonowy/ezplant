@@ -21,14 +21,18 @@ class PlantViewModel(private val dao: PlantDao): ViewModel() {
         }
     }
 
-    fun insertPlant(plantName: String, dehydrated: Int?) {
+    fun insertPlant(plantName: String, species: String, dehydrated: Int?, shouldFertilize: Boolean, fertilization: Int?, lastFertilized: Date?) {
         viewModelScope.launch {
 
             dao.insert(PlantEntity(
                 plantName = plantName,
                 dehydration = dehydrated,
                 lastWatered = Date(),
-                photoPath = ""
+                shouldFertilize = shouldFertilize,
+                species = species,
+                fertilization = fertilization,
+                lastFertilized = lastFertilized,
+                photoPath = "",
             ))
         }
     }
